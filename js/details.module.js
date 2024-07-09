@@ -12,6 +12,8 @@ export class Details {
   }
 
   async getDetails(id) {
+    const loader = document.querySelector(".loading");
+    loader.classList.remove("d-none");
     const options = {
       method: "GET",
       headers: {
@@ -27,5 +29,7 @@ export class Details {
 
     const response = await api.json();
     this.ui.showDetails(response);
+    loader.classList.add("d-none");
+
   }
 }
